@@ -16,7 +16,7 @@ public class OgretmenMenu implements Islemler {
     ArrayList<Ogretmen> ogretmenList=new ArrayList<>();
     Scanner scan=new Scanner(System.in);
 
-    void ogrtmnMenu(){
+    void ogretmenMenu(){
         System.out.println("============= İŞLEMLER =============\n" +
                              " 1-EKLEME\n" +
                              " 2-ARAMA\n" +
@@ -69,30 +69,31 @@ public class OgretmenMenu implements Islemler {
         int sicilNo=scan.nextInt();
         Ogretmen ogretmenBilgi=new Ogretmen(isim,soyIsim,tcNo,yas,bolum,sicilNo);
         ogretmenList.add(ogretmenBilgi);
-        ogrtmnMenu();
+        ogretmenMenu();
     }
-
     @Override
     public void arama() {
-        if (!ogretmenList.isEmpty()){
-            System.out.print("Arama yapılacak Tc No giriniz :");
-            String aranilacakTcNo= scan.next();
-
+        if (!ogretmenList.isEmpty()) {
+            System.out.println("ARAMA YAPILACAK TCNO GİRİNİZ: ");
+            String aranacakTcNo = scan.next();
             for (int i = 0; i < ogretmenList.size(); i++) {
-                if (ogretmenList.get(i).getTcNo().equals(aranilacakTcNo)){
+                if (ogretmenList.get(i).getTcNo().equals(aranacakTcNo)) {
                     System.out.println(ogretmenList.toString());
-                    ogrtmnMenu();
-                }else{
-                    System.out.println("Tc NO ya ait ogretmen bulunamamıstır");
+                    ogretmenMenu();
+                } else {
+                    System.out.println("TCNO YA AİT ÖĞRETMEN BULUNAMAMIŞTIR.");
+                    ogretmenMenu();
                 }
             }
-
-        }else{
-            System.out.println("Ogretmen listesi bos");
-            ogrtmnMenu();
+        } else {
+            System.out.println("ÖĞRETMEN LİSTENİZ BOŞ.");
+            ogretmenMenu();
         }
 
     }
+
+
+
 
     @Override
     public void listeleme() {
@@ -100,10 +101,10 @@ public class OgretmenMenu implements Islemler {
             for (Ogretmen each:ogretmenList) {
                 System.out.println(each.toString());
             }
-            ogrtmnMenu();
+            ogretmenMenu();
         }else{
             System.out.println("Ogretmen listesi bos");
-            ogrtmnMenu();
+            ogretmenMenu();
         }
 
     }
@@ -118,13 +119,13 @@ public class OgretmenMenu implements Islemler {
                 if (ogretmenList.get(i).getTcNo().equals(silinecekTcNo)){
                     ogretmenList.remove(i);
                     System.out.println("TcNo'lu ogrenci silindi");
-                    ogrtmnMenu();
+                    ogretmenMenu();
                 }
             }
 
         }else{
             System.out.println("Ogretmen listesi bos");
-            ogrtmnMenu();
+            ogretmenMenu();
         }
 
     }

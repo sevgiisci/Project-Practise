@@ -73,24 +73,8 @@ public class OgrenciMenu implements Islemler{
 
     }
 
-    @Override
-    public void arama() {
-        if (!ogrenciList.isEmpty()){
-            System.out.print("Aranacak Tc No giriniz :");
-            String aranacakTcNo=scan.next();
-            for (int i = 0; i < ogrenciList.size(); i++) {
-                if (ogrenciList.get(i).getTcNo().equals(aranacakTcNo)){
-                    System.out.println(ogrenciList.get(i));
-                }
-            }
-            ogrMenu();
 
-        }else{
-            System.out.println("Ogrenci listesi bos");
-            ogrMenu();
-        }
 
-    }
 
     @Override
     public void listeleme() {
@@ -106,8 +90,25 @@ public class OgrenciMenu implements Islemler{
         }
 
     }
-
     @Override
+    public void arama() {
+        if (!ogrenciList.isEmpty()) {
+            System.out.print("Aranacak TC No giriniz: ");
+            String aranacakTcNo = scan.next();
+            for (int i = 0; i < ogrenciList.size(); i++) {
+                if (ogrenciList.get(i).getTcNo().equals(aranacakTcNo)) {
+                    System.out.println(ogrenciList.get(i));
+                }
+            }
+            ogrMenu();
+        } else {
+            System.out.println("Ogrenci Listesi boş");
+            ogrMenu();
+        }
+
+    }
+
+        @Override
     public void silme() {
         if (!ogrenciList.isEmpty()){
             System.out.print("Silme yapılacak Tc No giriniz :");
